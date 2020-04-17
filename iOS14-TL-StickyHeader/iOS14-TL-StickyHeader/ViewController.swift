@@ -35,7 +35,13 @@ class ViewController: UIViewController {
     func setUpViews() {
         view.addSubview(headerView)
         
-        tableView.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
+        tableView.contentInset = UIEdgeInsets(top: headerView.defaultHeight, left: 0, bottom: 0, right: 0)
+    }
+    
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+        
+        
     }
 }
 
@@ -43,43 +49,11 @@ extension ViewController: UITableViewDelegate {
     
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
      
-        var y: CGFloat = -scrollView.contentOffset.y
+        let y: CGFloat = scrollView.contentOffset.y
         print("y: \(y)")
         
-        var height = y
-        if height >= headerView.minHeight && height <= headerViewHeight {
-            height = y
-        } else if height < headerView.minHeight {
-            height = headerView.minHeight
-        } else { // height > headerViewHeight
-            // if you want to prevent it from stretching, add this constraint
-            height = headerViewHeight
-        }
-        
-        headerView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: height)
-        
-        // Hide content
-        
-        let defaultHeight: CGFloat = 300
-        let cutOff: CGFloat = 100
-        var alpha: CGFloat = 1
-        
-//        y = abs(y)
-        print("y: \(y)")
-        if y < defaultHeight && y >= defaultHeight - cutOff {
-            alpha = (y - (defaultHeight - cutOff)) / cutOff
-            print("partial alpha: \(alpha)")
-        } else if y < (defaultHeight - cutOff) {
-            alpha = 0
-            print("no alpha")
-        } else if y >= defaultHeight {
-            alpha = 1
-            print("full alpha")
-        }
-        
-        headerView.hideImage(alpha: alpha)
-
-        
+        headerView.updateViewForScrollPosition(y: scrollView.contentOffset.y,
+                                               width: view.bounds.width)
     }
     
 }

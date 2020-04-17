@@ -9,14 +9,16 @@
 import UIKit
 
 class HeaderView: UIView {
-    
+    var defaultHeight: CGFloat = 300
+    var alphaCutOffDistance: CGFloat = 100  // after x points scrolled up, image alpha is 0
+
     var temperatureLabel: UILabel = {
         let label = UILabel()
         label.text = "98º"
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 60.0, weight: .light)
         label.hasDropShadow = true
-//                label.backgroundColor = .green
+//      label.backgroundColor = .green
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,7 +28,7 @@ class HeaderView: UIView {
         label.text = "Rochester, NY"
         label.textColor = .white
         label.hasDropShadow = true
-//                label.backgroundColor = .green
+//      label.backgroundColor = .green
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -82,19 +84,12 @@ class HeaderView: UIView {
     
     func setUpViews() {
         backgroundColor = .systemBlue
-//        alpha = 0.5
-        isOpaque = false
         
         stackView.addArrangedSubview(iconImageView)
         stackView.addArrangedSubview(cityLabel)
         stackView.addArrangedSubview(summaryLabel)
         stackView.addArrangedSubview(temperatureLabel)
         addSubview(stackView)
-        
-        self.backgroundColor = .systemBlue
-        
-        layoutIfNeeded()
-
     }
     
     fileprivate func setUpConstraints() {
@@ -115,8 +110,30 @@ class HeaderView: UIView {
             cityTopSpace
         ])
     }
-
-    func hideImage(alpha: CGFloat) {
+    
+    func updateViewForScrollPosition(y: CGFloat, width: CGFloat) {
+        // Update the height based on scroll position
+        var height: CGFloat = -y
+        if height < minHeight {
+            height = minHeight
+        } else if height > defaultHeight {
+            // if you want to prevent it from stretching comment out
+            height = defaultHeight
+        }
+        frame = CGRect(x: 0, y: 0, width: width, height: height)
+        
+        // Hide content if you scroll up
+        var alpha: CGFloat = 1
+        if height < defaultHeight &&
+            height >= defaultHeight - alphaCutOffDistance {
+            alpha = (height - (defaultHeight - alphaCutOffDistance)) / alphaCutOffDistance
+        } else if height < (defaultHeight - alphaCutOffDistance) {
+            alpha = 0
+        }
+        fadeViews(alpha: alpha)
+    }
+    
+    func fadeViews(alpha: CGFloat) {
         iconImageView.alpha = alpha
         temperatureLabel.alpha = alpha
     }
