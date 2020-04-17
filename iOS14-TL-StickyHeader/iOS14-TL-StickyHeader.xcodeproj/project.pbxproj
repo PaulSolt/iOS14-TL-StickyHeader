@@ -13,7 +13,7 @@
 		BDC05436244A2C07004B2BB2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC05434244A2C07004B2BB2 /* Main.storyboard */; };
 		BDC05438244A2C09004B2BB2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BDC05437244A2C09004B2BB2 /* Assets.xcassets */; };
 		BDC0543B244A2C09004B2BB2 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = BDC05439244A2C09004B2BB2 /* LaunchScreen.storyboard */; };
-		BDC05443244A2E02004B2BB2 /* HeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC05442244A2E02004B2BB2 /* HeaderView.swift */; };
+		BDC05443244A2E02004B2BB2 /* StickyHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC05442244A2E02004B2BB2 /* StickyHeaderView.swift */; };
 		BDC05445244A32B5004B2BB2 /* UILabel+DropShadow.swift in Sources */ = {isa = PBXBuildFile; fileRef = BDC05444244A32B5004B2BB2 /* UILabel+DropShadow.swift */; };
 /* End PBXBuildFile section */
 
@@ -26,7 +26,7 @@
 		BDC05437244A2C09004B2BB2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BDC0543A244A2C09004B2BB2 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		BDC0543C244A2C09004B2BB2 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		BDC05442244A2E02004B2BB2 /* HeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderView.swift; sourceTree = "<group>"; };
+		BDC05442244A2E02004B2BB2 /* StickyHeaderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StickyHeaderView.swift; sourceTree = "<group>"; };
 		BDC05444244A32B5004B2BB2 /* UILabel+DropShadow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+DropShadow.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -63,7 +63,7 @@
 				BDC0542E244A2C07004B2BB2 /* AppDelegate.swift */,
 				BDC05430244A2C07004B2BB2 /* SceneDelegate.swift */,
 				BDC05432244A2C07004B2BB2 /* ViewController.swift */,
-				BDC05442244A2E02004B2BB2 /* HeaderView.swift */,
+				BDC05442244A2E02004B2BB2 /* StickyHeaderView.swift */,
 				BDC05444244A32B5004B2BB2 /* UILabel+DropShadow.swift */,
 				BDC05434244A2C07004B2BB2 /* Main.storyboard */,
 				BDC05437244A2C09004B2BB2 /* Assets.xcassets */,
@@ -148,7 +148,7 @@
 				BDC05445244A32B5004B2BB2 /* UILabel+DropShadow.swift in Sources */,
 				BDC0542F244A2C07004B2BB2 /* AppDelegate.swift in Sources */,
 				BDC05431244A2C07004B2BB2 /* SceneDelegate.swift in Sources */,
-				BDC05443244A2E02004B2BB2 /* HeaderView.swift in Sources */,
+				BDC05443244A2E02004B2BB2 /* StickyHeaderView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

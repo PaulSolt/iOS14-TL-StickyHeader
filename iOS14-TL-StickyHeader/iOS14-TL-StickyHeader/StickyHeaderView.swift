@@ -1,5 +1,5 @@
 //
-//  HeaderView.swift
+//  StickyHeaderView.swift
 //  iOS14-TL-StickyHeader
 //
 //  Created by Paul Solt on 4/17/20.
