@@ -11,7 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     let headerViewHeight: CGFloat = 300
-    
+    let minHeight: CGFloat = 100
+
     lazy var headerView: HeaderView = {
 //        self.view is loaded at this point because this is lazy
         let header = HeaderView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: headerViewHeight))
@@ -37,9 +38,6 @@ class ViewController: UIViewController {
         
         tableView.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
     }
-
-
-    let minHeight: CGFloat = 100
 }
 
 extension ViewController: UITableViewDelegate {
@@ -50,10 +48,16 @@ extension ViewController: UITableViewDelegate {
         print("y: \(y)")
         
         var height = y
-        
+        if height >= minHeight && height <= headerViewHeight {
+            height = y
+        } else if height < minHeight {
+            height = minHeight
+        } else { // height > headerViewHeight
+            // if you want to prevent it from stretching, add this constraint
+            height = headerViewHeight
+        }
         
         headerView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: height)
-        
     }
     
 }
