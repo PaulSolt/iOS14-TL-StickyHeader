@@ -16,7 +16,7 @@ class HeaderView: UIView {
         label.textColor = .white
         label.font = UIFont.systemFont(ofSize: 60.0, weight: .light)
         label.hasDropShadow = true
-                label.backgroundColor = .green
+//                label.backgroundColor = .green
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
@@ -26,7 +26,7 @@ class HeaderView: UIView {
         label.text = "Rochester, NY"
         label.textColor = .white
         label.hasDropShadow = true
-                label.backgroundColor = .green
+//                label.backgroundColor = .green
         label.font = UIFont.preferredFont(forTextStyle: .title1)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -37,7 +37,7 @@ class HeaderView: UIView {
         label.text = "Clear"
         label.textColor = .white
         label.hasDropShadow = true
-                label.backgroundColor = .red
+//                label.backgroundColor = .red
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -62,6 +62,12 @@ class HeaderView: UIView {
         return stackView
     }()
 
+    var systemSpace: CGFloat = 8
+    var minHeight: CGFloat {
+        return round(cityLabel.frame.height + summaryLabel.frame.height + systemSpace + safeAreaInsets.top + 1 + systemSpace)
+        // FIXME: Why is this off by 1 pixel? Where odes it come from?
+        // FIXME: Put it inside an inner stack view and get the height of that inner stack view
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -76,7 +82,7 @@ class HeaderView: UIView {
     
     func setUpViews() {
         backgroundColor = .systemBlue
-        alpha = 0.5
+//        alpha = 0.5
         isOpaque = false
         
         stackView.addArrangedSubview(iconImageView)
@@ -110,4 +116,8 @@ class HeaderView: UIView {
         ])
     }
 
+    func hideImage(alpha: CGFloat) {
+        iconImageView.alpha = alpha
+        temperatureLabel.alpha = alpha
+    }
 }

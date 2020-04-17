@@ -11,7 +11,6 @@ import UIKit
 class ViewController: UIViewController {
 
     let headerViewHeight: CGFloat = 300
-    let minHeight: CGFloat = 100
 
     lazy var headerView: HeaderView = {
 //        self.view is loaded at this point because this is lazy
@@ -48,16 +47,36 @@ extension ViewController: UITableViewDelegate {
         print("y: \(y)")
         
         var height = y
-        if height >= minHeight && height <= headerViewHeight {
+        if height >= headerView.minHeight && height <= headerViewHeight {
             height = y
-        } else if height < minHeight {
-            height = minHeight
+        } else if height < headerView.minHeight {
+            height = headerView.minHeight
         } else { // height > headerViewHeight
             // if you want to prevent it from stretching, add this constraint
             height = headerViewHeight
         }
         
         headerView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: height)
+        
+        // Hide content
+        
+        let defaultHeight: CGFloat = 300
+        let cutOff: CGFloat = 100
+        var alpha: CGFloat = 1
+        
+        y = abs(y)
+        print("y: \(y)")
+        if y <= defaultHeight && y >= defaultHeight - cutOff {
+            alpha = (y - (defaultHeight - cutOff)) / cutOff
+        } else if y < (defaultHeight - cutOff) {
+            alpha = 0
+        } else if y > defaultHeight {
+            alpha = 1
+        }
+        
+        headerView.hideImage(alpha: alpha)
+
+        
     }
     
 }
