@@ -11,8 +11,8 @@ import UIKit
 class ViewController: UIViewController {
 
     lazy var headerView: StickyHeaderView = {
-        // lazy allows us to access self.view
-        let header = StickyHeaderView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: StickyHeaderView.defaultHeight))
+        // lazy allows us to access view after it exists
+        let header = StickyHeaderView(frame: CGRect(x: 0.0, y: 0.0, width: view.bounds.width, height: StickyHeaderView.defaultHeight))
         return header
     }()
     
@@ -46,7 +46,6 @@ extension ViewController: UITableViewDelegate {
         headerView.updateViewForScrollPosition(y: scrollView.contentOffset.y,
                                                width: view.bounds.width)
     }
-    
 }
 
 extension ViewController: UITableViewDataSource {
@@ -61,5 +60,4 @@ extension ViewController: UITableViewDataSource {
         cell.textLabel?.text = "\(indexPath.row)"
         return cell
     }
-    
 }
