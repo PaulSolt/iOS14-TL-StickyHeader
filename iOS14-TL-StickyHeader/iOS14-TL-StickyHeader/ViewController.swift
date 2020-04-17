@@ -10,6 +10,15 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let headerViewHeight: CGFloat = 300
+    
+    lazy var headerView: HeaderView = {
+//        self.view is loaded at this point because this is lazy
+        let header = HeaderView(frame: CGRect(x: 0.0, y: 0.0, width: self.view.bounds.width, height: headerViewHeight))
+        
+        return header
+    }()
+    
     @IBOutlet var tableView: UITableView!
     
     
@@ -19,12 +28,21 @@ class ViewController: UIViewController {
         
         tableView.delegate = self
         tableView.dataSource = self
+        
+        setUpViews()
+    }
+    
+    func setUpViews() {
+        view.addSubview(headerView)
+        
+        tableView.contentInset = UIEdgeInsets(top: headerViewHeight, left: 0, bottom: 0, right: 0)
     }
 
 
 }
 
 extension ViewController: UITableViewDelegate {
+    
     
     
 }
