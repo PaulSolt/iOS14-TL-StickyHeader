@@ -64,14 +64,17 @@ extension ViewController: UITableViewDelegate {
         let cutOff: CGFloat = 100
         var alpha: CGFloat = 1
         
-        y = abs(y)
+//        y = abs(y)
         print("y: \(y)")
-        if y <= defaultHeight && y >= defaultHeight - cutOff {
+        if y < defaultHeight && y >= defaultHeight - cutOff {
             alpha = (y - (defaultHeight - cutOff)) / cutOff
+            print("partial alpha: \(alpha)")
         } else if y < (defaultHeight - cutOff) {
             alpha = 0
-        } else if y > defaultHeight {
+            print("no alpha")
+        } else if y >= defaultHeight {
             alpha = 1
+            print("full alpha")
         }
         
         headerView.hideImage(alpha: alpha)

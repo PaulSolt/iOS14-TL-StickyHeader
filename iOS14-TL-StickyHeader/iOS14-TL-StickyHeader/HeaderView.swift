@@ -37,7 +37,7 @@ class HeaderView: UIView {
         label.text = "Clear"
         label.textColor = .white
         label.hasDropShadow = true
-//                label.backgroundColor = .red
+//                label.backgroundColeor = .red
         label.font = UIFont.preferredFont(forTextStyle: .body)
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
