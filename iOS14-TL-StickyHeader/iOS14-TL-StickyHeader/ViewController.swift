@@ -39,11 +39,22 @@ class ViewController: UIViewController {
     }
 
 
+    let minHeight: CGFloat = 100
 }
 
 extension ViewController: UITableViewDelegate {
     
-    
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+     
+        var y: CGFloat = -scrollView.contentOffset.y
+        print("y: \(y)")
+        
+        var height = y
+        
+        
+        headerView.frame = CGRect(x: 0, y: 0, width: view.bounds.size.width, height: height)
+        
+    }
     
 }
 

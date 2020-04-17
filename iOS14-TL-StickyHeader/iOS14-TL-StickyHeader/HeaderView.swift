@@ -23,6 +23,8 @@ class HeaderView: UIView {
     
     func setUpViews() {
         backgroundColor = .systemBlue
+        alpha = 0.5
+        isOpaque = false
     }
     
 }
